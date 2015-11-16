@@ -1,1 +1,1 @@
-# Bowling_Lottery_WebAPI
+# Web API for Bowling Lottery
