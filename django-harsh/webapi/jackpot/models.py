@@ -18,7 +18,7 @@ class Bowler(models.Model):
         if not self.id:
             self.created = timezone.now()
         self.modified = timezone.now()
-        return super(User, self).save(*args, **kwargs)
+        return super(Bowler, self).save(*args, **kwargs)
     
     
     def __unicode__(self):
@@ -28,6 +28,9 @@ class Bowler(models.Model):
         ordering = ('created',)
 
 
+class League(models.Model):
 
-class Lottery(models.Model):
-    lot_name = models.CharField(max_length=200)
+    name = models.CharField(max_length=200)
+    
+
+

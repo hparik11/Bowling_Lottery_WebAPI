@@ -6,7 +6,7 @@ class BowlerSerializer(serializers.Serializer):
     id = serializers.IntegerField(read_only=True)
     name = serializers.CharField(required=False, allow_blank=True, max_length=200)
     #email = serializers.EmailField(max_length=200)
-    #created = serializers.DateTimeField()
+    created = serializers.DateTimeField()
     #password = serializers.CharField(max_length=6)
     amount = serializers.IntegerField(default=1000)
 
