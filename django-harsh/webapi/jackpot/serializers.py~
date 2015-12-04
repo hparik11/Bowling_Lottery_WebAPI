@@ -1,12 +1,13 @@
 from rest_framework import serializers
 from jackpot.models import Bowler
-
+from jackpot.models import League
 
 class BowlerSerializer(serializers.Serializer):
+
     id = serializers.IntegerField(read_only=True)
     name = serializers.CharField(required=False, allow_blank=True, max_length=200)
     #email = serializers.EmailField(max_length=200)
-    created = serializers.DateTimeField()
+    created = serializers.DateTimeField(required=False)
     #password = serializers.CharField(max_length=6)
     amount = serializers.IntegerField(default=1000)
 
@@ -29,3 +30,16 @@ class BowlerSerializer(serializers.Serializer):
         
         instance.save()
         return instance
+
+
+
+
+class LeagueSerializer(serializers.Serializer):
+    
+    id = serializers.IntegerField(read_only=True)
+    name = serializers.CharField(required=False, allow_blank=True, max_length=200)
+    bowler_id = serializers.ListField(child=serializers.IntegerField(min_value=0, max_value=100))
+    
+
+    
+

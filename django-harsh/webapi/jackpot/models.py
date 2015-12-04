@@ -1,26 +1,18 @@
 from django.db import models
-from django.utils import timezone
+#from django.utils import timezone
+import datetime
+
 
 # Create your models here.
 
 class Bowler(models.Model):
 
-    modified = models.DateTimeField()
-    created = models.DateTimeField(editable=False)
+    modified = models.DateTimeField(default=datetime.datetime.now)
+    created = models.DateTimeField(default=datetime.datetime.now,editable=False)
     name = models.CharField(max_length=200)
-    #email = models.EmailField(max_length=200)
+    
     amount = models.IntegerField(default=1000)
 
-
-
-    def save(self, *args, **kwargs):
-        ''' On save, update timestamps '''
-        if not self.id:
-            self.created = timezone.now()
-        self.modified = timezone.now()
-        return super(Bowler, self).save(*args, **kwargs)
-    
-    
     def __unicode__(self):
         return self.name
     
@@ -31,6 +23,17 @@ class Bowler(models.Model):
 class League(models.Model):
 
     name = models.CharField(max_length=200)
+    bowler_id = models.IntegerField(default=0)
+
     
+    def __unicode__(self):
+        return self.name
 
+class Lottery(models.Model):
 
+    name = models.CharField(max_length=200)
+    bowler_id = models.IntegerField(default=0)
+
+    
+    def __unicode__(self):
+        return self.name

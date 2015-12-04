@@ -20,7 +20,7 @@ class UserViewSet(viewsets.ModelViewSet):
 
 
 # Routers provide a way of automatically determining the URL conf.
-router = routers.DefaultRouter()
+router = routers.DefaultRouter(trailing_slash=False)
 router.register(r'users', UserViewSet)
 
 
@@ -29,6 +29,7 @@ urlpatterns = [
     #url(r'^', include(router.urls)),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     url(r'^', include('jackpot.urls')),
+    
 
     # Examples:
     # url(r'^$', 'webapi.views.home', name='home'),
